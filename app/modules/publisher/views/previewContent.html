@@ -1,0 +1,34 @@
+<div class="global-container" ng-controller="previewContentController as previewContent">
+  <div ng-if="previewContent.content.template">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <a ui-sref="publisher.list" class="btn btn-primary pull-right"><span class="ion-arrow-left-c"></span> REGRESAR A LISTADO</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="mtop10" ng-bind="previewContent.content.title"></h1>
+        <h4><span class="ion-android-calendar"></span> Fecha de publicación:
+          <span ng-bind="(previewContent.content.approvalDate | date) || 'Eliminado'"></span>
+        </h4>
+      </div>
+    </div>
+    <div class="row mtop10">
+      <div class="col-sm-12">
+        <img class="width100" ng-src="{{previewContent.image}}"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div ng-bind-html="previewContent.content.template.texto"></div>
+      </div>
+    </div>
+    <div class="row mtop10">
+      <div class="col-sm-12">
+        <div ng-if="previewContent.isThereVideo">
+          <div ng-bind-html="previewContent.video | trust"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

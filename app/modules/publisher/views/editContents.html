@@ -1,0 +1,15 @@
+<div class="global-container" ng-controller="editContentController as editContent">
+  <div class="row">
+    <div class="col-sm-10 col-xs-12">
+      <h2 class="mtop10 light"><span class="ion-edit"></span> Editar contenido</h2>
+    </div>
+    <div class="col-sm-2 col-xs-12">
+      <a ui-sref="publisher.list" class="btn btn-primary pull-right mtop10"><span class="ion-arrow-left-c"></span> REGRESAR A LISTADO</a>
+    </div>
+  </div>   
+  <div class="row">
+    <div class="col-sm-12">
+      <ng-include ng-if="editContent.loadFinish" src="'app/modules/publisher/views/' + editContent.templates[editContent.typeTemplate] + '.html'"></ng-include>
+    </div>
+  </div>
+</div>

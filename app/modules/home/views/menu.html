@@ -1,0 +1,31 @@
+<div class="nav_bar" ng-controller="homeMenuController as homeMenu">
+  <nav class="main_menu">
+    <div class="welcome">
+      <h3>Bienvenido!</h3>
+    </div>
+    <ul class="sidebar-nav">
+      <li ng-repeat="(key, value) in homeMenu.menus" ng-if="value.typesAccessUsers[homeMenu.roleUser] == true">
+        <div ng-if="value.typeMenu == 1">
+          <a home-app-dropdown-submenu="#{{key}}" class="collapsed" idelement="{{key}}">
+            <span class="{{value.icon}} icon-menu-lateral"></span>
+            {{value.label}}
+            <span id="iconMenu{{keyMenu}}" class="ion-arrow-down-b ion-chevron-down"></span> 
+          </a>
+          <ul class="sidebar-nav_submenu hide2" id="{{key}}" class="collapsed">
+              <li class="sub_menu" ng-repeat="subMenu in value.SUBITEMS" ng-if="subMenu.typesAccessUsers[homeMenu.roleUser] == true">
+                  <a class="sub-menu link-menu" ui-sref="{{subMenu.url}}">
+                    <div class="link-menu">{{subMenu.label}}</div>
+                  </a>
+              </li> 
+          </ul>
+        </div>
+        <div ng-if="value.typeMenu == 0">
+          <a ui-sref="{{value.url}}" class="link-menu">
+            <span class="{{value.icon}} icon-menu-lateral"></span> 
+            {{value.label}}
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,63 @@
+<div ng-controller="templateOnlyTextController as templateOnlyText">
+  <div ng-if="templateOnlyText.alertContent" class="alert alert-{{templateOnlyText.alertContent.type}} alert-dismissible alert-fixed" role="alert">
+    <button type="button" class="close" ng-click="templateOnlyText.alertContent = null" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{templateOnlyText.alertContent.message}}
+  </div>
+  <form name="formEditor">
+    <div class="row mtop20">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <label class="control-label">Título:</label>
+          <input type="text"
+            name="title"
+            class="form-control"
+            placeholder="Título"
+            ng-model="templateOnlyText.content.title"
+            no-validation-message="true"
+            validator="required,maxlength=60">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label class="control-label" for="category">Categoría:</label>
+          <ui-select name="category"
+            ng-model="templateOnlyText.content.idCategory"
+            validator="required" no-validation-message="true">
+            <ui-select-match placeholder="Categoría">{{$select.selected.nameCategory}}</ui-select-match>
+            <ui-select-choices repeat="category.$id as category in templateOnlyText.listCategory |filter: $select.search track by $index">
+              <div>{{category.nameCategory}}</div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="control-label" for="abstract">Añadir Resumen (Max 60 carácteres):</label>
+          <textarea maxlength="60" class="form-control" ng-model="templateOnlyText.content.abstract" name="abstract" no-validation-message="true" validator="required,maxlength=60"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <!-- ta-toolbar="[['h3','p','ul','ol','undo','redo','clear'],
+                ['bold','italics','underline','strikeThrough','quote','insertLink'],
+                ['justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent']]" -->
+          <div text-angular ng-model="templateOnlyText.htmlContent"
+                validator="required" no-validation-message="true" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button class="btn btn-primary pull-right" type="submit" validation-submit="formEditor" ng-click="templateOnlyText.saveContent()" ng-disabled="templateOnlyText.buttonDisabled">GUARDAR</button>
+      </div>
+    </div>
+
+  </form>
+</div>

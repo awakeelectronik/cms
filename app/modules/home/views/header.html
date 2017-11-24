@@ -1,0 +1,26 @@
+<header class="back_header" ng-controller="homeHeaderController as homeHeader">
+  <home-menu></home-menu>
+  <home-icon-menu></home-icon-menu>
+  <a href="#">
+    <img ng-src="app/assets/img/logo.png" class="main_logo pull-left">
+  </a>
+  <div class="content_alerts pull-right hidden-xs cursor">
+    <div disabled class="dropdown pull-right btn-group hidden-xs">
+      <button class="btn dropdown-toggle dropdown-state" ng-class="{'btn-connected' : (homeHeader.user.availability.$value == 1), 'btn-disconnected' : (homeHeader.user.availability.$value == 3), 'btn-busy' : (homeHeader.user.availability.$value == 2), 'btn-offline' : (homeHeader.user.availability.$value == 4)}"  type="button" data-toggle="dropdown">
+       <span class="ion-person"></span> {{homeHeader.email}} <span class="caret m-left"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li role="menuitem">
+          <a class="cursor" ui-sref="changePassword">
+            Cambiar contraseña
+          </a>
+        </li>
+        <li role="menuitem">
+          <a class="cursor" ng-click="homeHeader.logOut()">
+            Cerrar sesión
+          </a>
+        </li>
+      </ul>
+    </div> 
+  </div>
+</header>

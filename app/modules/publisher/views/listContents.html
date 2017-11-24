@@ -1,0 +1,91 @@
+<div class="global-container" ng-controller="listContentsController as listContents">
+  <div class="row">
+    <div class="col-sm-12">
+      <div ng-if="listContents.alertContent" class="alert alert-{{listContents.alertContent.type}} alert-dismissible alert-fixed" role="alert">
+        <button type="button" class="close" ng-click="listContents.alertContent = null" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{listContents.alertContent.message}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 col-xs-12">
+      <h2 class="mtop10 light"><span class="ion-filing"></span> Filtros de búsqueda</h2>
+    </div>
+    <div class="col-sm-2 col-xs-12">
+      <a href="#!/publisher/writer" class="btn btn-primary pull-right mtop10 animated fadeIn">
+        <span class="ion-document-text"></span> CREAR ARTÍCULO
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <label for="year" class="control-label">Año</label>
+      <ui-select name="year"
+        ng-model="listContents.yearNow" theme="bootstrap"
+        validator="required" no-validation-message="true"
+        ng-change="listContents.findContents(listContents.yearNow, listContents.monthNow)">
+        <ui-select-match placeholder="Año">{{$select.selected.NAME}}</ui-select-match>
+        <ui-select-choices repeat="year in listContents.years | filter: $select.search">
+          <div>{{year.NAME}}</div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+    <div class="col-sm-3 col-xs-12">
+      <label for="month" class="control-label">Mes</label>
+      <ui-select name="month" ng-model="listContents.monthNow"
+        theme="bootstrap" validator="required" no-validation-message="true"
+        ng-change="listContents.findContents(listContents.yearNow, listContents.monthNow)">>
+        <ui-select-match placeholder="Mes">{{$select.selected.NAME}}</ui-select-match>
+        <ui-select-choices repeat="month in listContents.months | filter: $select.search">
+          <div>{{month.NAME}}</div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+  </div>
+
+  <div ng-if="!listContents.contentsData" loading></div>
+  <div ng-if="listContents.contentsData.length == 0" no-list-display tittle="Sin contenidos" message="No tiene contenidos en este periodo"></div>
+
+  <div class="row mtop20" ng-if="listContents.contentsData.length > 0">
+    <div class="col-sm-12">
+      <div class="well">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="thead">
+              <tr>
+                <th class="white">#</th>
+                <th class="bold white">Fecha creación</th>
+                <th class="bold white">Fecha publicación</th>
+                <th class="bold white text-center">Título</th>
+                <th class="bold white text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="content in listContents.contentsData track by $index">
+                <th scope="row">{{$index + 1}}</th>
+                <td>
+                  {{content.creationDate | date:'dd/MM/yyyy h:mm:ss a'}}
+                </td>
+                <td>
+                  {{ content.approvalDate || content.approvalDate | date:'dd/MM/yyyy h:mm:ss a'}}
+                </td>
+                <td class="text-center">{{content.title}}</td>
+                <td>
+                  <button ng-click="listContents.viewContent(content)" type="submit" class="btn btn-success btn-xs pull-right m5">
+                    VER
+                  </button>
+                  <button ng-click="listContents.edit(content)" type="submit" class="btn btn-warning btn-xs pull-right m5">
+                    EDITAR
+                  </button>
+                  <button ng-if="listContents.canPublish" ng-click="listContents.publish(content)" type="submit" class="btn btn-cancel btn-xs pull-right m5">
+                    <span ng-if="content.state == 2">DESPUBLICAR</span><span ng-if="content.state != 2">PUBLICAR</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

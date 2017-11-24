@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="metasVoice">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=yes" />
+	<title>Admin</title>
+	<link rel='stylesheet' href='bower_components/angular-block-ui/dist/angular-block-ui.min.css'>
+	
+	<link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='bower_components/font-awesome/css/font-awesome.min.css'>
+	<link rel='stylesheet' href='bower_components/textAngular/dist/textAngular.css'>
+	<link rel='stylesheet' href='bower_components/angular-ui-select/dist/select.min.css'>
+	<link rel="stylesheet" href="app/assets/css/styles.css">
+
+</head>
+
+<body>
+	<div style="height: 80px;" ui-view="header"></div>
+	<div ui-view="container"></div>
+
+	<!--Contenido principal WEB-ADMIN ------------>
+
+	<!-- ----------------START BOWER LIBS JS------------------------------->
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui-router/release/stateEvents.js"></script>
+	<script type="text/javascript" src="bower_components/firebase/firebase.js"></script>
+	<script type="text/javascript" src="bower_components/angularfire/dist/angularfire.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui-select/dist/select.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-validation/dist/angular-validation.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-validation/dist/angular-validation-rule.min.js"></script>
+	<!--
+	<script type="text/javascript" src="bower_components/angular-locale_es-co/angular-locale_es-co.js"></script>
+	-->
+	<script type="text/javascript" src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
+	<script type="text/javascript" src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+	<script type="text/javascript" src="bower_components/textAngular/dist/textAngular.min.js"></script>
+	<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-moment/angular-moment.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-block-ui/dist/angular-block-ui.min.js"></script>
+	<!--
+	<script type="text/javascript" src="bower_components/angular-i18n/angular-locale_es-co.js"></script>
+	<script type="text/javascript" src="bower_components/file-saver/FileSaver.min.js"></script>
+	-->
+	<script type="text/javascript" src="bower_components/angular-img-cropper/dist/angular-img-cropper.min.js"></script>
+	<script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+	<!-- ----------------END BOWER LIBS JS------------------------------->
+
+	<!-- ----------------START COMMON ---------------------------- -->
+	<script type="text/javascript" src="app/common/app.js"></script>
+	<script type="text/javascript" src="app/common/factory/commonUserFact.js"></script>
+	<script type="text/javascript" src="app/common/factory/commonImageFact.js"></script>
+	<script type="text/javascript" src="app/common/factory/commonTokenFact.js"></script>
+	<script type="text/javascript" src="app/common/service/commonUserSrv.js"></script>
+	<script type="text/javascript" src="app/common/service/commonImageSrv.js"></script>
+	<script type="text/javascript" src="app/common/service/commonModalSrv.js"></script>
+	<script type="text/javascript" src="app/common/service/commonFirebaseConnectionsSrv.js"></script>
+	<script type="text/javascript" src="app/common/service/commonUtilitiesSrv.js"></script>
+	<script type="text/javascript" src="app/common/filters/trust.js"></script>
+	<script type="text/javascript" src="app/common/directive/noListDisplay.js"></script>
+	<script type="text/javascript" src="app/common/controller/commonModalController.js"></script>
+	
+	<!--script type="text/javascript" src="app/common/factory/commonUserFact.js"></script>
+	<script type="text/javascript" src="app/common/factory/commonPrivateUserFact.js"></script>
+	<script type="text/javascript" src="app/common/factory/commonBusinessAgreementsFact.js"></script>
+	<script type="text/javascript" src="app/common/service/commonUserSrv.js"></script>
+	<script type="text/javascript" src="app/common/service/commonPrivateUserSrv.js"></script>
+	<script type="text/javascript" src="app/common/directive/numberToString.js"></script>
+	<script type="text/javascript" src="app/common/directive/numbersOnly.js"></script>
+	<script type="text/javascript" src="app/common/filters/searchPagination.js"></script>
+	<script type="text/javascript" src="app/common/filters/pagination.js"></script>
+	<!-- ----------------END COMMON ------------------------------->
+
+	<!-- ----------------START AGRO MODULE------------------------------->
+	<script type="text/javascript" src="app/app.config.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+	<!-- ----------------END AGRO MODULE------------------------------->
+
+	<!-- ----------------START USER MODULE------------------------------->
+	<script type="text/javascript" src="app/modules/user/app.js"></script>
+	<script type="text/javascript" src="app/modules/user/controller/loginController.js"></script>
+	<script type="text/javascript" src="app/modules/user/controller/forgotPassController.js"></script>
+	<script type="text/javascript" src="app/modules/user/controller/changePasswordController.js"></script>
+	<!-- ----------------END USER MODULE------------------------------->
+
+	<!-- ----------------START HOME MODULE------------------------------->
+	<script type="text/javascript" src="app/modules/home/app.js"></script>
+	<script type="text/javascript" src="app/modules/home/controller/homeHeaderController.js"></script>
+	<script type="text/javascript" src="app/modules/home/controller/homeMenuController.js"></script>
+	<script type="text/javascript" src="app/modules/home/directive/homeMenu.js"></script>
+	<script type="text/javascript" src="app/modules/home/directive/homeIconMenu.js"></script>
+	<script type="text/javascript" src="app/modules/home/directive/homeAppDropdownSubmenu.js"></script>
+
+	<!-- ----------------END HOME MODULE------------------------------->
+
+	<!-- ----------------START PUBLISH MODULE------------------------------->
+	<script type="text/javascript" src="app/modules/publisher/app.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/factory/contentFact.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/service/contentSrv.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/writerContentController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/templateOnlyTextController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/templateImageTextController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/templateVideoTextController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/templateImageVideoTextController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/listContentsController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/previewContentController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/editContentController.js"></script>
+	<script type="text/javascript" src="app/modules/publisher/controller/categoriesCRUD.js"></script>
+	<!-- ----------------END EDITOR MODULE------------------------------->
+
+</body>
+
+</html>

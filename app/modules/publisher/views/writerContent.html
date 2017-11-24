@@ -1,0 +1,59 @@
+<div class="global-container">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="mtop10 light"><span class="ion-compose"></span> Redactar</h2>
+      <h3>Escribir contenido:</h3>
+    </div>
+  </div>
+
+  <div ng-controller="writerContentController as writerContent">
+    <div class="row mtop10">
+      <div class="col-sm-3">
+        <div class="cursor" ng-click="writerContent.typeTemplate = 0">
+          <div class="boxresult" ng-class="{'boxresultActive' : (writerContent.typeTemplate==0)}">
+            <img src="app/assets/img/templates/template1.svg" alt="">
+          </div>
+          <h4 class="text-center">
+            <span class="ion-document"></span> Sólo texto
+          </h4>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="cursor" ng-click="writerContent.typeTemplate = 1">
+          <div class="boxresult" ng-class="{'boxresultActive' : (writerContent.typeTemplate==1)}">
+            <img src="app/assets/img/templates/template2.svg" alt="">
+          </div>
+          <h4 class="text-center">
+            <span class="ion-document"></span> Imagen y texto
+          </h4>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="cursor" ng-click="writerContent.typeTemplate = 2">
+          <div class="boxresult" ng-class="{'boxresultActive' : (writerContent.typeTemplate==2)}">
+            <img src="app/assets/img/templates/template3.svg" alt="">
+          </div>
+          <h4 class="text-center">
+            <span class="ion-document"></span> Video y texto
+          </h4>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="cursor" ng-click="writerContent.typeTemplate = 3">
+          <div class="boxresult" ng-class="{'boxresultActive' : (writerContent.typeTemplate==3)}">
+            <img src="app/assets/img/templates/template4.svg" alt="">
+          </div>
+          <h4 class="text-center">
+            <span class="ion-document"></span> Imagen, texto y video
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <ng-include src="'app/modules/publisher/views/' + writerContent.templates[writerContent.typeTemplate] + '.html'"></ng-include>
+      </div>
+    </div>
+  </div>
+</div>

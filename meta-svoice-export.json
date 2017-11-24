@@ -1,0 +1,55 @@
+{
+  "userAccessAdmin" : {
+    "otro" : {
+      "creationDate" : 1468007285,
+      "email" : "awakeelectronik@gmail.com",
+      "typeAccess" : "user"
+    },
+    "rUs9Nxu8GAVvGap5gmfryZEy7eB2" : {
+      "creationDate" : 1468007285,
+      "email" : "awakeelectronik@gmail.com",
+      "typeAccess" : "admin"
+    }
+  },
+  "userAccessAdminMenu" : {
+    "-KMB4vGmKdJy1gx6nDZj" : {
+      "SUBITEMS" : {
+        "-KMB4vGmKdJy1g" : {
+          "icon" : "ion-ios-people",
+          "label" : "Redactar",
+          "order" : 0,
+          "typesAccessUsers" : {
+            "admin" : true
+          },
+          "url" : "publisher.writer"
+        },
+        "-KMB4vGmKdJy1g2" : {
+          "icon" : "ion-ios-people",
+          "label" : "Listar contenidos",
+          "order" : 1,
+          "typesAccessUsers" : {
+            "admin" : true
+          },
+          "url" : "publisher.list"
+        },
+        "-KMB4vGmKdJy1g3" : {
+          "icon" : "ion-ios-people",
+          "label" : "Categorías",
+          "order" : 2,
+          "typesAccessUsers" : {
+            "admin" : true
+          },
+          "url" : "publisher.categories"
+        }
+      },
+      "icon" : "ion-ios-speedometer",
+      "label" : "Gestor de contenido",
+      "order" : 1,
+      "typeMenu" : 1,
+      "typesAccessUsers" : {
+        "admin" : true
+      },
+      "url" : "#"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+<div ng-controller="templateImageTextController as templateImageText">
+  <div ng-if="templateImageText.alertContent" class="alert alert-{{templateImageText.alertContent.type}} alert-dismissible alert-fixed" role="alert">
+    <button type="button" class="close" ng-click="templateImageText.alertContent = null" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{templateImageText.alertContent.message}}
+  </div>
+  <img ng-show="templateImageText.image" src="{{templateImageText.image}}">
+  <form name="formEditor">
+    <div class="row mtop20">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <label for="title" class="control-label">Título</label>
+          <input type="text"
+          name="title"
+          class="form-control"
+          placeholder="Título"
+          ng-model="templateImageText.content.title"
+          no-validation-message="true"
+          validator="required,maxlength=60">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label class="control-label" for="category">Categoría:</label>
+          <ui-select name="category"
+            ng-model="templateImageText.content.idCategory"
+            validator="required" no-validation-message="true">
+            <ui-select-match placeholder="Categoría">{{$select.selected.nameCategory}}</ui-select-match>
+            <ui-select-choices repeat="category.$id as category in templateImageText.listCategory |filter: $select.search track by $index">
+              <div>{{category.nameCategory}}</div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+    </div>
+    <div class="row mtop10">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <a class="camera cursor" ngf-select="templateImageText.openImage($file)" name="file" ngf-accept="'image/*'">
+            <span class="ion-camera"></span>
+            AGREGAR IMAGEN
+          </a>
+          <div class="content_upload" ng-show="templateImageText.initialImage">
+            <button type="button" class="close corner_close" ng-click="templateImageText.initialImage = null"><span aria-hidden="true">×</span></button>
+            <div class="cropArea">
+              <canvas width="900p" height="480"
+                image-cropper image="templateImageText.initialImage"
+                cropped-image="templateImageText.imageCropped"
+                crop-width="700" crop-height="400" keep-aspect="true"
+                touch-radius="30" crop-area-bounds="bounds">
+              </canvas>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <button class="btn btn-primary" ng-click="templateImageText.crop()">Guardar imagen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="control-label" for="abstract">Añadir Resumen (Max 60 carácteres):</label>
+          <textarea maxlength="60" class="form-control" ng-model="templateImageText.content.abstract" name="abstract" no-validation-message="true" validator="required,maxlength=60"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div text-angular ng-model="templateImageText.htmlContent"
+                validator="required" no-validation-message="true" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button class="btn btn-primary pull-right" type="submit" validation-submit="formEditor" ng-disabled="!templateImageText.image && !templateImageText.buttonDisabled" ng-click="templateImageText.saveContent()">GUARDAR</button>
+      </div>
+    </div>
+
+  </form>
+</div>

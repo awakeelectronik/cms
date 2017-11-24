@@ -1,0 +1,49 @@
+<div class="container-fluid" ng-controller="logInController as login">
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+        <p class="p-sesion text-center">Inicia sesión para acceder a Agrotek admin</p>
+        <div>
+          <div class="alert alert-{{login.alert.type}} alert-dismissible" role="alert" ng-if="login.alert">
+            {{login.alert.message}}
+          </div>
+        </div>
+      </div>
+    </div>    
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4 col-xs-12">
+        <div class="caja-tama">
+          <div class="caja-login animated fadeIn">
+            <h2>Iniciar sesión</h2>
+            <form name="formLogin" role="form">
+              <div class="form-group" ng-class="{'has-error': formLogin.inputEmail.$invalid && formLogin.inputEmail.$dirty, 'has-success': formLogin.inputEmail.$valid}">
+                <label for="inputEmail">Correo electrónico</label>
+                <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Correo" required ng-model="login.login.email" required autofocus>
+                <div ng-show="formLogin.inputEmail.$dirty && formLogin.inputEmail.$invalid">
+                  <p class="help-block text-danger" ng-show="formLogin.inputEmail.$error.required">Correo requerido</p>
+                  <p class="help-block text-danger" ng-show="formLogin.inputEmail.$error.email" >Inválido correo</p>
+                </div>
+              </div>
+              <div class="form-group" ng-class="{'has-error': formLogin.inputPassword.$invalid && formLogin.inputPassword.$dirty, 'has-success': formLogin.inputPassword.$valid}">
+                <label for="inputPassword">Ingrese su clave</label>
+                <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Ingrese clave" ng-model="login.login.password" required>
+                <div ng-show="formLogin.inputPassword.$dirty && formLogin.inputPassword.$invalid">
+                  <p class="help-block text-danger" ng-show="formLogin.inputPassword.$error.required">Clave requerida</p>
+                </div>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" ng-disabled="formLogin.$invalid || btnDisable == true" type="submit" ng-click="login.authUser()">Acceder</button>
+              <div class="form-group mtop20">
+                <p class="text-center">
+                  <a href="#!/forgotpassword">¿Has olvidado la contraseña?</a>
+                </p>
+              </div>            
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h6 class="text-center mtop20">Copyright © 2017. Todos los derechos reservados Agrotek Web 2017.</h6>
+      </div>
+    </div>     
+</div>
