@@ -60,17 +60,6 @@ var publisherConfig = function($stateProvider) {
           templateUrl: "app/modules/publisher/views/editContents.html"
         }
       }
-    })
-    .state("publisher.categories", {
-      url: "/categories",
-      requireAuth: true,
-      rolesAccepted: ["admin"],
-      cache: false,
-      views: {
-        "container@": {
-          templateUrl: "app/modules/publisher/views/categoriesCRUD.html"
-        }
-      }
     });
 };
 publisherConfig.$inject = ["$stateProvider"];

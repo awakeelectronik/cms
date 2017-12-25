@@ -3,19 +3,9 @@
 
 var templateImageTextController = function (textAngularManager,contentSrv,commonImageSrv,$state,$stateParams){
     var vm = this;
-    vm.getCategories = function(){
-        contentSrv.loadCategories()
-        .then((data) => {
-            vm.listCategory = data.categories;
-        })
-        .catch((error) => {
-            throw(error);
-        });
-    };
 
     vm.loadContents = function() {
         vm.htmlContent = "<h2>¡Escriba aquí el contenido!</h2>";
-        vm.getCategories();
         if($stateParams.idContent){
             vm.id = $stateParams.idContent;
             contentSrv.getContentById(vm.id)
@@ -82,7 +72,7 @@ var templateImageTextController = function (textAngularManager,contentSrv,common
             if(vm.newImage){
                commonImageSrv.saveImageBase64(vm.id + ".png", vm.image, "publisher/voz");
             }
-        } else if(vm.content && vm.content.abstract && vm.content.title && vm.content.idCategory){
+        } else if(vm.content && vm.content.abstract && vm.content.title){
             contentSrv.saveContent(1,vm.content,vm.htmlContent,vm.imageCropped)
             .then(() => {
                 vm.alertContent = {
