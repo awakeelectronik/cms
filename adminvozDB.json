@@ -1,0 +1,140 @@
+{
+  "contentManager" : {
+    "all" : {
+      "-L14odWysWhU5Me4U-mt" : {
+        "abstract" : "ads",
+        "approvalDate" : "Pendiente",
+        "creationDate" : 1514073659703,
+        "idCategory" : "-L14oXkDQdOdkq-yuqRz",
+        "state" : 1,
+        "template" : {
+          "texto" : "<h2>¡Escriba aquí el contenido!</h2>",
+          "video" : ""
+        },
+        "title" : "prueba",
+        "typeTemplate" : 1
+      },
+      "-L14osz4tdLKZHTXQhE1" : {
+        "abstract" : "bvc",
+        "approvalDate" : 1514073744602,
+        "creationDate" : 1514073722978,
+        "idCategory" : "-L14oXkDQdOdkq-yuqRz",
+        "state" : 2,
+        "template" : {
+          "texto" : "<h2>¡Escriba aquí el contenido!</h2>",
+          "video" : ""
+        },
+        "title" : "xc",
+        "typeTemplate" : 1
+      },
+      "-L1DQ-fBQBo7cYjxnHDo" : {
+        "abstract" : "Prueas",
+        "approvalDate" : "Pendiente",
+        "creationDate" : 1514217933703,
+        "idCategory" : "-L14oXkDQdOdkq-yuqRz",
+        "state" : 1,
+        "template" : {
+          "texto" : "<h2>¡Escriba aquí el contenido!</h2>",
+          "video" : ""
+        },
+        "title" : "Prueba",
+        "typeTemplate" : 1
+      },
+      "-L1EY6nxbu-eWPQEy-Xf" : {
+        "abstract" : "as",
+        "approvalDate" : "Pendiente",
+        "creationDate" : 1514236837331,
+        "idCategory" : "-L14oXkDQdOdkq-yuqRz",
+        "state" : 1,
+        "template" : {
+          "texto" : "<h2>¡Escriba aquí el contenido!d</h2>",
+          "video" : ""
+        },
+        "title" : "prueba voz",
+        "typeTemplate" : 1
+      },
+      "-L1EbvpraO7U241A-2I_" : {
+        "abstract" : "ase",
+        "approvalDate" : "Pendiente",
+        "creationDate" : 1514238099991,
+        "idCategory" : "-L14oXkDQdOdkq-yuqRz",
+        "state" : 1,
+        "template" : {
+          "texto" : "<h2>¡Escriba aquí el contenido!d</h2>",
+          "video" : ""
+        },
+        "title" : "prueba voz 2",
+        "typeTemplate" : 1
+      }
+    },
+    "public" : {
+      "-L14osz4tdLKZHTXQhE1" : {
+        "abstract" : "bvc",
+        "creationDate" : 1514073722978,
+        "idCategory" : "-L14oXkDQdOdkq-yuqRz",
+        "title" : "xc",
+        "typeTemplate" : 1
+      }
+    }
+  },
+  "contentManagerCategory" : {
+    "-L14oXkDQdOdkq-yuqRz" : {
+      "creationDate" : 1514073631928,
+      "nameCategory" : "a",
+      "state" : "approved"
+    }
+  },
+  "userAccessAdmin" : {
+    "otro" : {
+      "creationDate" : 1468007285,
+      "email" : "awakeelectronik@gmail.com",
+      "typeAccess" : "user"
+    },
+    "svTpS6EZRHPWbeKMqU0gmLSaRbf2" : {
+      "creationDate" : 1468007285,
+      "email" : "awakeelectronik@gmail.com",
+      "typeAccess" : "admin"
+    }
+  },
+  "userAccessAdminMenu" : {
+    "-KMB4vGmKdJy1gx6nDZj" : {
+      "SUBITEMS" : {
+        "-KMB4vGmKdJy1g" : {
+          "icon" : "ion-ios-people",
+          "label" : "Redactar",
+          "order" : 0,
+          "typesAccessUsers" : {
+            "admin" : true
+          },
+          "url" : "publisher.writer"
+        },
+        "-KMB4vGmKdJy1g2" : {
+          "icon" : "ion-ios-people",
+          "label" : "Listar contenidos",
+          "order" : 1,
+          "typesAccessUsers" : {
+            "admin" : true
+          },
+          "url" : "publisher.list"
+        },
+        "-KMB4vGmKdJy1g3" : {
+          "icon" : "ion-ios-people",
+          "label" : "Categorías",
+          "order" : 2,
+          "typesAccessUsers" : {
+            "admin" : true
+          },
+          "url" : "publisher.categories"
+        }
+      },
+      "icon" : "ion-ios-speedometer",
+      "label" : "Gestor de contenido",
+      "order" : 1,
+      "typeMenu" : 1,
+      "typesAccessUsers" : {
+        "admin" : true
+      },
+      "url" : "#"
+    }
+  }
+}
