@@ -5,19 +5,8 @@ var templateVideoTextController = function (textAngularManager,contentSrv,$state
     var vm = this;
     vm.htmlContent = "<h2>¡Escriba aquí el contenido!</h2>";
 
-    vm.getCategories = function(){
-        contentSrv.loadCategories()
-        .then((data) => {
-            vm.listCategory = data.categories;
-        })
-        .catch((error) => {
-            throw(error);
-        });
-    };
-
     if($stateParams.idContent){
         vm.id = $stateParams.idContent;
-        vm.getCategories();
         contentSrv.getContentById(vm.id)
         .then((content) => {
             vm.content = content.content;
@@ -44,7 +33,7 @@ var templateVideoTextController = function (textAngularManager,contentSrv,$state
                     message: "No se guardaron los datos, inténtelo en unos minutos"
                 };
             });
-        } else if(vm.content && vm.content.abstract && vm.content.title && vm.content.idCategory){
+        } else if(vm.content && vm.content.abstract && vm.content.title){
             contentSrv.saveContent(2,vm.content,vm.htmlContent)
             .then(() => {
                 vm.alertContent = {
@@ -65,7 +54,6 @@ var templateVideoTextController = function (textAngularManager,contentSrv,$state
                     message: "Todos los campos son obligatorios"
                 };
     };
-    vm.getCategories();
 };
 templateVideoTextController.$inject = ["textAngularManager","contentSrv","$state","$stateParams"];
 
