@@ -3,12 +3,12 @@
 /*global localStorage:true*/
 
 var config = {
-    apiKey: "AIzaSyAL-XnjjzZJ2n_j4Wdexzh8eAsSqEpaxtg",
-    authDomain: "meta-svoice.firebaseapp.com",
-    databaseURL: "https://meta-svoice.firebaseio.com",
-    projectId: "meta-svoice",
-    storageBucket: "meta-svoice.appspot.com",
-    messagingSenderId: "324545983889"
+    apiKey: "AIzaSyDq6PSY2L-ZvqlougBmVNBTxeRUeroH4D8",
+    authDomain: "adminvoz-9f584.firebaseapp.com",
+    databaseURL: "https://adminvoz-9f584.firebaseio.com",
+    projectId: "adminvoz-9f584",
+    storageBucket: "adminvoz-9f584.appspot.com",
+    messagingSenderId: "189324485306"
   };
   firebase.initializeApp(config);
 
