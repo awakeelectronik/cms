@@ -37,7 +37,7 @@ var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, c
           if(content.typeTemplate==2 || content.typeTemplate==3)
             result.isThereVideo = true;
           if(content.typeTemplate==1 || content.typeTemplate==3)
-            return commonImageFact.downloadImage("publisher/",id+".png");
+            return commonImageFact.downloadImage("publisher/voz",id+".png");
           return null;
         })
         .then((url) => {
@@ -87,7 +87,7 @@ var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, c
         contentFact.saveContent(insert)
           .then((key) => {
             if (typeTemplate == 1 || typeTemplate == 3) {
-              commonImageSrv.saveImageBase64(key + ".png", image, "publisher/");
+              commonImageSrv.saveImageBase64(key + ".png", image, "publisher/voz/");
             }
             resolve();
           })

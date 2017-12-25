@@ -80,7 +80,7 @@ var templateImageVideoTextController = function (textAngularManager,contentSrv,c
                 };
             });
             if(vm.newImage){
-               commonImageSrv.saveImageBase64(vm.id + ".png", vm.image, "publisher");
+               commonImageSrv.saveImageBase64(vm.id + ".png", vm.image, "publisher/voz");
             }
         } else  if(vm.content && vm.content.abstract && vm.content.title && vm.content.idCategory){
             contentSrv.saveContent(3,vm.content,vm.htmlContent,vm.imageCropped)
