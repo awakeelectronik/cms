@@ -2,7 +2,7 @@
 
 var writerContentController = function (contentSrv){
     var vm = this;
-    vm.typeTemplate =3;
+    vm.typeTemplate =1;
     vm.templates = contentSrv.arrayTemplates;
 };
 writerContentController.$inject = ["contentSrv"];
