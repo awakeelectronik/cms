@@ -4,7 +4,7 @@
   </div>
   <form name="formEditor">
     <div class="row mtop20">
-      <div class="col-sm-8">
+      <div class="col-sm-12">
         <div class="form-group">
           <label class="control-label" for="title">Título</label>
           <input type="text"
@@ -14,19 +14,6 @@
           ng-model="templateVideoText.content.title"
           no-validation-message="true"
           validator="required,maxlength=60">
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="form-group">
-          <label class="control-label" for="category">Categoría:</label>
-          <ui-select name="category"
-            ng-model="templateVideoText.content.idCategory"
-            validator="required" no-validation-message="true">
-            <ui-select-match placeholder="Categoría">{{$select.selected.nameCategory}}</ui-select-match>
-            <ui-select-choices repeat="category.$id as category in templateVideoText.listCategory |filter: $select.search track by $index">
-              <div>{{category.nameCategory}}</div>
-            </ui-select-choices>
-          </ui-select>
         </div>
       </div>
     </div>

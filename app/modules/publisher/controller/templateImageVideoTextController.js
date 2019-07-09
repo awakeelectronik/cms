@@ -2,21 +2,11 @@
 
 var templateImageVideoTextController = function (textAngularManager,contentSrv,commonImageSrv,$state,$stateParams){
     var vm = this;
-    vm.getCategories = function(){
-        contentSrv.loadCategories()
-        .then((data) => {
-            vm.listCategory = data.categories;
-        })
-        .catch((error) => {
-            throw(error);
-        });
-    };
 
     vm.loadContents = function() {
         vm.htmlContent = "<h2>¡Escriba aquí el contenido!</h2>";
         if($stateParams.idContent){
             vm.id = $stateParams.idContent;
-            vm.getCategories();
             contentSrv.getContentById(vm.id)
             .then((content) => {
                 vm.content = content.content;
@@ -24,7 +14,6 @@ var templateImageVideoTextController = function (textAngularManager,contentSrv,c
                 vm.htmlContent = vm.content.template.texto;
             });
         } 
-        vm.getCategories();
     };
 
    vm.openImage = function(file) {
@@ -62,6 +51,8 @@ var templateImageVideoTextController = function (textAngularManager,contentSrv,c
 
     vm.saveContent = function (){
         vm.buttonDisabled = true;
+        var a = vm.content.template.video;
+        vm.content.template.video = a.slice(a.indexOf("?v=")>0?a.indexOf("?v=")+3:0,a.length);
         if(vm.id){
             vm.content.template.texto = vm.htmlContent;
             vm.content.approvalDate = "Pendiente";
@@ -80,9 +71,9 @@ var templateImageVideoTextController = function (textAngularManager,contentSrv,c
                 };
             });
             if(vm.newImage){
-               commonImageSrv.saveImageBase64(vm.id + ".png", vm.image, "publisher");
+               commonImageSrv.saveImageBase64(vm.id + ".png", vm.image, "publisher/voz");
             }
-        } else  if(vm.content && vm.content.abstract && vm.content.title && vm.content.idCategory){
+        } else  if(vm.content && vm.content.abstract && vm.content.title){
             contentSrv.saveContent(3,vm.content,vm.htmlContent,vm.imageCropped)
             .then(() => {
                 vm.alertContent = {

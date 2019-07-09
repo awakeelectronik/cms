@@ -3,19 +3,6 @@
 
 var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, commonUserSrv,commonImageFact) {
   var responseContentSrv = {
-    loadCategories: function() {
-      return $q((resolve, reject) => {
-        var result = {};
-        contentFact.getCategories()
-          .then((categoriesData) => {
-            result.categories = categoriesData;
-            resolve(result);
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    },
     getContents: function(year, month) {
       var range = commonUtilitiesSrv.getRangeFromMonth(month, year);
       return $q((resolve, reject) => {
@@ -49,22 +36,6 @@ var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, c
         });
       });
     },
-    saveCategory: function(nameCategory) {
-      const category = {
-        creationDate: firebase.database.ServerValue.TIMESTAMP,
-        nameCategory: nameCategory,
-        state: "approved"
-      };
-      return $q((resolve, reject) => {
-        contentFact.saveCategory(category)
-          .then(() => {
-            resolve();
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
-    },
     saveContent: function(typeTemplate, data, content, image) {
       if (typeTemplate == 0 || typeTemplate == 1)
         data.template = {video : ""};
@@ -73,13 +44,12 @@ var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, c
           abstract: data.abstract,
           approvalDate: "Pendiente",
           creationDate: firebase.database.ServerValue.TIMESTAMP,
-          idCategory: data.idCategory,
           state: 1,
           title: data.title,
           typeTemplate: typeTemplate,
+          video: data.template.video,
           template: {
             texto: content,
-            video: data.template.video
           }
         }
       };
@@ -87,7 +57,7 @@ var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, c
         contentFact.saveContent(insert)
           .then((key) => {
             if (typeTemplate == 1 || typeTemplate == 3) {
-              commonImageSrv.saveImageBase64(key + ".png", image, "publisher/");
+              commonImageSrv.saveImageBase64(key + ".png", image, "publisher/voz/");
             }
             resolve();
           })
@@ -114,31 +84,9 @@ var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, c
         });
       });
     },
-    updateCategoryState: function(idCategory, fields){
-      return $q((resolve, reject) => {
-        contentFact.updateCategory(idCategory, fields)
-        .then(() => {
-          resolve();
-        })
-        .catch((error) => {
-          reject(error);
-        });
-      });
-    },
     deleteContentMin: function(idContent){
       return $q((resolve, reject) => {
         contentFact.deleteContentMin(idContent)
-        .then(() => {
-          resolve();
-        })
-        .catch((error) => {
-          reject(error);
-        });
-      });
-    },
-    deleteCategory: function(idCategory){
-      return $q((resolve, reject) => {
-        contentFact.deleteCategory(idCategory)
         .then(() => {
           resolve();
         })
@@ -153,9 +101,10 @@ var contentSrv = function($q, contentFact, commonImageSrv, commonUtilitiesSrv, c
         bodyMin: {
           abstract: content.abstract,
           creationDate: content.creationDate,
-          idCategory: content.idCategory,
           title: content.title,
           typeTemplate: content.typeTemplate,
+          video: content.video
+
         }
       };
       return $q((resolve, reject) => {
